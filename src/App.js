@@ -1,24 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import ToDo from './Components';
+import Counter from './Components/Counter';
+import Form from './Components/Form';
+import FetchData from './Components/Fetch';
+import Timer from './Components/Timer';
+import Signal from './Components/Signal';
+import { createContext, useState } from 'react';
 
-function App() {
+export  const AppContext = createContext()
+
+const App =()=> {
+
+
+  const [store,setStore] = useState({
+    name:"Raghava"
+  })
+
+
   return (
+    <AppContext.Provider value={{store,setStore}}>
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Signal/> */}
+      <ToDo/>
+      <Counter/>
+      {/* <FetchData/> */}
+      {/* <Form/> */}
+      {/* <Timer/> */}
     </div>
+       </AppContext.Provider>
+
   );
 }
 
